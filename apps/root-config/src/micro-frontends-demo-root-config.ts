@@ -4,6 +4,7 @@ import {
   constructRoutes,
   constructLayoutEngine,
 } from "single-spa-layout";
+// @ts-ignore
 import microfrontendLayout from "./microfrontend-layout.html";
 
 const routes = constructRoutes(microfrontendLayout);

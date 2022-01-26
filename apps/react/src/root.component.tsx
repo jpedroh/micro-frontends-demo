@@ -1,3 +1,4 @@
+import React from 'react';
 import * as singleSpa from 'single-spa';
 
 export default function Root(props) {

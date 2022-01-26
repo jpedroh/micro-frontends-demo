@@ -1,0 +1,29 @@
+{
+  "name": "root",
+  "version": "1.0.0",
+  "description": "A demo application using MFE concepts built with Angular, React and Single-SPA.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:main": "npm run start --workspace=@micro-frontends-demo/main",
+    "start:react": "npm run start --workspace=@micro-frontends-demo/react",
+    "start:root": "npm run start --workspace=@micro-frontends-demo/root-config",
+    "start:all": "npm-run-all --parallel \"start:main\" \"start:react\" \"start:root\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpedroh/micro-frontends-demo.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jpedroh/micro-frontends-demo/issues"
+  },
+  "homepage": "https://github.com/jpedroh/micro-frontends-demo#readme",
+  "workspaces": [
+    "apps/**",
+    "lib/**"
+  ],
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

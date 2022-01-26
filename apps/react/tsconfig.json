@@ -1,7 +1,22 @@
 {
-  "extends": "ts-config-single-spa",
   "compilerOptions": {
-    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "module": "esnext",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "lib": [
+      "dom",
+      "es5",
+      "scripthost",
+      "es2015",
+      "es2015.promise",
+      "es2016.array.include",
+      "es2018"
+    ],
+    "emitDeclarationOnly": true,
+    "jsx": "react",
+    "declaration": true,
     "declarationDir": "dist"
   },
   "files": ["src/micro-frontends-demo-react.tsx"],

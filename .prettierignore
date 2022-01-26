@@ -3,6 +3,14 @@
 yarn.lock
 yarn-error.log
 package-lock.json
+dist
+coverage
+pnpm-lock.yaml
+.gitignore
+.prettierignore
+yarn.lock
+yarn-error.log
+package-lock.json
 LICENSE
 *.ejs
 dist
