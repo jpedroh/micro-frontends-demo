@@ -1,5 +1,6 @@
 {
   "name": "@micro-frontends-demo/react",
+  "version": "1.0.0",
   "scripts": {
     "start": "webpack serve --port 8500",
     "start:standalone": "webpack serve --env standalone",

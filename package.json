@@ -1,13 +1,14 @@
 {
   "name": "root",
   "version": "1.0.0",
+  "private": true,
   "description": "A demo application using MFE concepts built with Angular, React and Single-SPA.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:main": "npm run start --workspace=@micro-frontends-demo/main",
     "start:react": "npm run start --workspace=@micro-frontends-demo/react",
     "start:root": "npm run start --workspace=@micro-frontends-demo/root-config",
-    "start:all": "npm-run-all --parallel \"start:main\" \"start:react\" \"start:root\""
+    "start:all": "npm-run-all --parallel \"start:react\" \"start:root\""
   },
   "repository": {
     "type": "git",
