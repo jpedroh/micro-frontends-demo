@@ -1,21 +1,18 @@
 import { registerApplication, start } from "single-spa";
-import {
-  constructApplications,
-  constructRoutes,
-  constructLayoutEngine,
-} from "single-spa-layout";
 // @ts-ignore
-import microfrontendLayout from "./microfrontend-layout.html";
+import { getUser } from "@micro-frontends-demo/auth"
 
-const routes = constructRoutes(microfrontendLayout);
-const applications = constructApplications({
-  routes,
-  loadApp({ name }) {
-    return System.import(name);
-  },
-});
-const layoutEngine = constructLayoutEngine({ routes, applications });
+registerApplication(
+  'main',
+  () => System.import('@micro-frontends-demo/main'),
+  (location) => !location.pathname.includes('react'),
+  () => { return { user: getUser() } },
+);
 
-applications.forEach(registerApplication);
-layoutEngine.activate();
+registerApplication(
+  'react',
+  () => System.import('@micro-frontends-demo/react'),
+  (location) => location.pathname.includes('react')
+);
+
 start();

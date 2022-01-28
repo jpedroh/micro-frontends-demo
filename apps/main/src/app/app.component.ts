@@ -1,13 +1,20 @@
-import { Component } from '@angular/core';
-// @ts-ignore
-import { getUser } from '@micro-frontends-demo/auth'
+import { Component, OnInit } from '@angular/core';
+import { singleSpaPropsSubject } from 'src/single-spa/single-spa-props';
+import { map } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  ngOnInit(): void {
+    singleSpaPropsSubject.pipe(map((props: any) => props.user)).subscribe(user => {
+      this.user$ = user
+    })
+  }
+
   title = 'main';
-  // user = getUser()
+  user$ = of(null);
 }
