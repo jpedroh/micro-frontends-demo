@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { singleSpaPropsSubject } from 'src/single-spa/single-spa-props';
 import { map } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { assetUrl } from 'src/single-spa/asset-url';
 
 @Component({
   selector: 'app-root',
@@ -17,4 +18,6 @@ export class AppComponent implements OnInit {
 
   title = 'main';
   user$ = of(null);
+
+  trollFace = assetUrl('troll-face.jpg')
 }

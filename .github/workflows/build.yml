@@ -69,6 +69,7 @@ jobs:
         with:
           path: ~/dist
       - run: mv ~/dist/root/index.html ~/dist/index.html
+      - run: mv ~/dist/main/assets ~/dist/assets
       - run: |
           echo "{
             \"imports\": {

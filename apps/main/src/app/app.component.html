@@ -7,4 +7,5 @@
 <p><a routerLink="/react">Go to React</a></p>
 <p *ngIf="(user$ | async)">{{ user$ | async | json }}</p>
 <p *ngIf="!(user$ | async)">Loading</p>
+<img width=300 [src]='trollFace' />
 <router-outlet></router-outlet>
