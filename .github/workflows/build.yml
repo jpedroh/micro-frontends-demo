@@ -78,7 +78,7 @@ jobs:
               \"@micro-frontends-demo/auth\": \"/auth/micro-frontends-demo-auth.js\"
             }
           }" > ~/dist/importmap.json
-      - run: touch out/.nojekyll
+      - run: touch ~/dist/.nojekyll
       - uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
