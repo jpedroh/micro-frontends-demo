@@ -27,7 +27,7 @@ jobs:
         with:
           node-version: '14'
       - run: yarn install
-      - run: yarn workspace @micro-frontends-demo/main build
+      - run: yarn workspace @micro-frontends-demo/main build --prod --deploy-url https://jpedroh.github.io/micro-frontends-demo
       - uses: actions/upload-artifact@v2
         with:
           name: main
@@ -70,11 +70,13 @@ jobs:
           path: ~/dist
       - run: mv ~/dist/root/index.html ~/dist/index.html
       - run: mv ~/dist/main/assets ~/dist/assets
+      - name: Get angular build name
+        run: export ANGULAR_ENTRYPOINT=$(find dist/main -name '*.js' -printf "%f")
       - run: |
           echo "{
             \"imports\": {
               \"@micro-frontends-demo/root-config\": \"./root/micro-frontends-demo-root-config.js\",
-              \"@micro-frontends-demo/main\": \"./main/main.js\",
+              \"@micro-frontends-demo/main\": \"./main/${ANGULAR_ENTRYPOINT}\",
               \"@micro-frontends-demo/react\": \"./react/micro-frontends-demo-react.js\",
               \"@micro-frontends-demo/auth\": \"./auth/micro-frontends-demo-auth.js\"
             }
