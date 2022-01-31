@@ -5,10 +5,11 @@
   "description": "A demo application using MFE concepts built with Angular, React and Single-SPA.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:main": "npm run start --workspace=@micro-frontends-demo/main",
-    "start:react": "npm run start --workspace=@micro-frontends-demo/react",
-    "start:root": "npm run start --workspace=@micro-frontends-demo/root-config",
-    "start:all": "npm-run-all --parallel \"start:react\" \"start:root\""
+    "start:main": "yarn workspace @micro-frontends-demo/main start",
+    "start:react": "yarn workspace @micro-frontends-demo/react start",
+    "start:root": "yarn workspace @micro-frontends-demo/root-config start",
+    "start:auth": "yarn workspace @micro-frontends-demo/auth start",
+    "start": "concurrently \"yarn:start:root\" \"yarn:start:react\" \"yarn:start:main\" \"yarn:start:auth\""
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,6 @@
     "lib/**"
   ],
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "concurrently": "^7.0.0"
   }
 }
