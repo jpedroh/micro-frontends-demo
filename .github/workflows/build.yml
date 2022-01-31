@@ -61,6 +61,7 @@ jobs:
           name: auth-build
           path: lib/auth/dist
   package:
+    needs: [build_react, build_angular, build_root, build_auth]
     runs-on: ubuntu-latest
     steps:
       - name: Download all workflow run artifacts
