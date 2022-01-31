@@ -3,14 +3,23 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { EmptyRouteComponent } from './empty-route/empty-route.component';
+import { HomeComponent } from './home/home.component';
 
-const routes: Routes = [{
+const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'lazy-loaded',
+    //@ts-ignore
+    loadChildren: () => import('./lazy-loaded/lazy-loaded.module').then(m => m.LazyLoadedModule)
+  },
+  {
   path: '**',
   component: EmptyRouteComponent
-}, {
-  path: '',
-  component: AppComponent
-}];
+  }
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

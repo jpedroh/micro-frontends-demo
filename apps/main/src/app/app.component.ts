@@ -18,6 +18,4 @@ export class AppComponent implements OnInit {
 
   title = 'main';
   user$ = of(null);
-
-  trollFace = assetUrl('troll-face.jpg')
 }
