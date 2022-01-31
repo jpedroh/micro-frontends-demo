@@ -81439,7 +81439,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>Welcome to {{ title }}!</h1>\n  <img width=\"30\" alt=\"Angular Logo\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\">\n</div>\n<h2>I'm an Angular application</h2>\n<p><a routerLink=\"/react\">Go to React</a></p>\n<p *ngIf=\"(user$ | async)\">{{ user$ | async | json }}</p>\n<p *ngIf=\"!(user$ | async)\">Loading</p>\n<router-outlet></router-outlet>\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>Welcome to {{ title }}!</h1>\n  <img width=\"30\" alt=\"Angular Logo\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\">\n</div>\n<h2>I'm an Angular application</h2>\n<p><a routerLink=\"/react\">Go to React</a></p>\n<p *ngIf=\"(user$ | async)\">{{ user$ | async | json }}</p>\n<p *ngIf=\"!(user$ | async)\">Loading</p>\n<img width=300 [src]='trollFace' />\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -81458,6 +81458,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_single_spa_single_spa_props__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/single-spa/single-spa-props */ "./src/single-spa/single-spa-props.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "../../node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "../../node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var src_single_spa_asset_url__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/single-spa/asset-url */ "./src/single-spa/asset-url.ts");
+
 
 
 
@@ -81467,6 +81469,7 @@ var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.title = 'main';
         this.user$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(null);
+        this.trollFace = Object(src_single_spa_asset_url__WEBPACK_IMPORTED_MODULE_5__["assetUrl"])('troll-face.jpg');
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -81636,6 +81639,30 @@ var lifecycles = Object(single_spa_angular__WEBPACK_IMPORTED_MODULE_6__["default
 var bootstrap = lifecycles.bootstrap;
 var mount = lifecycles.mount;
 var unmount = lifecycles.unmount;
+
+
+/***/ }),
+
+/***/ "./src/single-spa/asset-url.ts":
+/*!*************************************!*\
+  !*** ./src/single-spa/asset-url.ts ***!
+  \*************************************/
+/*! exports provided: assetUrl */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "assetUrl", function() { return assetUrl; });
+// In single-spa, the assets need to be loaded from a dynamic location,
+// instead of hard coded to `/assets`. We use webpack public path for this.
+// See https://webpack.js.org/guides/public-path/#root
+function assetUrl(url) {
+    // @ts-ignore
+    var publicPath = __webpack_require__.p;
+    var publicPathSuffix = publicPath.endsWith('/') ? '' : '/';
+    var urlPrefix = url.startsWith('/') ? '' : '/';
+    return "" + publicPath + publicPathSuffix + "assets" + urlPrefix + url;
+}
 
 
 /***/ }),
