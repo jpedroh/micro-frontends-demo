@@ -70,9 +70,9 @@ jobs:
           path: ~/dist
       - run: mv ~/dist/root/index.html ~/dist/index.html
       - run: mv ~/dist/main/assets ~/dist/assets
-      - name: Get angular build name
-        run: export ANGULAR_ENTRYPOINT=$(find dist/main -name '*.js' -printf "%f")
-      - run: |
+      - name: Generate import map
+        run: |
+          export ANGULAR_ENTRYPOINT=$(find dist/main -name 'main.*.js' -printf "%f")
           echo "{
             \"imports\": {
               \"@micro-frontends-demo/root-config\": \"./root/micro-frontends-demo-root-config.js\",
