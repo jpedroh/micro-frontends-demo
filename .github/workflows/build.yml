@@ -16,7 +16,7 @@ jobs:
       - run: yarn workspace @micro-frontends-demo/react build
       - uses: actions/upload-artifact@v2
         with:
-          name: react-build
+          name: react
           path: apps/react/dist
   build_angular:
     runs-on: ubuntu-latest
@@ -30,7 +30,7 @@ jobs:
       - run: yarn workspace @micro-frontends-demo/main build
       - uses: actions/upload-artifact@v2
         with:
-          name: main-build
+          name: main
           path: apps/main/dist/main
   build_root:
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
       - run: yarn workspace @micro-frontends-demo/root-config build
       - uses: actions/upload-artifact@v2
         with:
-          name: root-build
+          name: root
           path: apps/root-config/dist
   build_auth:
     runs-on: ubuntu-latest
@@ -58,9 +58,9 @@ jobs:
       - run: yarn workspace @micro-frontends-demo/auth build
       - uses: actions/upload-artifact@v2
         with:
-          name: auth-build
+          name: auth
           path: lib/auth/dist
-  package:
+  deploy:
     needs: [build_react, build_angular, build_root, build_auth]
     runs-on: ubuntu-latest
     steps:
@@ -68,4 +68,19 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           path: ~/dist
-      - run: ls -R ~/dist
+      - run: mv ~/dist/root/index.html ~/dist/index.html
+      - run: |
+          echo "{
+            \"imports\": {
+              \"@micro-frontends-demo/root-config\": \"/root-config/micro-frontends-demo-root-config.js\",
+              \"@micro-frontends-demo/main\": \"/main/main.js\",
+              \"@micro-frontends-demo/react\": \"/react/micro-frontends-demo-react.js\",
+              \"@micro-frontends-demo/auth\": \"/auth/micro-frontends-demo-auth.js\"
+            }
+          }" > ~/dist/importmap.json
+      - run: touch out/.nojekyll
+      - uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: ~/dist
