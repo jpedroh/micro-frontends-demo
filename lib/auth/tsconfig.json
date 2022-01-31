@@ -17,7 +17,8 @@
     ],
     "declaration": true,
     "emitDeclarationOnly": true,
-    "declarationDir": "dist"
+    "declarationDir": "dist",
+    "skipLibCheck": true
   },
   "include": ["src/**/*"],
   "exclude": ["src/**/*.test*"]
