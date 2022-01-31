@@ -68,17 +68,19 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           path: ~/dist
-      - run: mv ~/dist/root/index.html ~/dist/index.html
-      - run: mv ~/dist/main/assets ~/dist/assets
+      - run: mv ~/dist/root/* ~/dist
+      - run: mv ~/dist/main/* ~/dist
+      - run: mv ~/dist/react/* ~/dist
+      - run: mv ~/dist/auth/* ~/dist
       - name: Generate import map
         run: |
-          export ANGULAR_ENTRYPOINT=$(find dist/main -name 'main.*.js' -printf "%f")
+          export ANGULAR_ENTRYPOINT=$(find ~/dist/ -name 'main.*.js' -printf "%f")
           echo "{
             \"imports\": {
-              \"@micro-frontends-demo/root-config\": \"./root/micro-frontends-demo-root-config.js\",
-              \"@micro-frontends-demo/main\": \"./main/${ANGULAR_ENTRYPOINT}\",
-              \"@micro-frontends-demo/react\": \"./react/micro-frontends-demo-react.js\",
-              \"@micro-frontends-demo/auth\": \"./auth/micro-frontends-demo-auth.js\"
+              \"@micro-frontends-demo/root-config\": \"./micro-frontends-demo-root-config.js\",
+              \"@micro-frontends-demo/main\": \"./${ANGULAR_ENTRYPOINT}\",
+              \"@micro-frontends-demo/react\": \"./micro-frontends-demo-react.js\",
+              \"@micro-frontends-demo/auth\": \"./micro-frontends-demo-auth.js\"
             }
           }" > ~/dist/importmap.json
       - run: touch ~/dist/.nojekyll
