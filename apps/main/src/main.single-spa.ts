@@ -1,3 +1,5 @@
+import { setPublicPath } from 'systemjs-webpack-interop'; setPublicPath('@micro-frontends-demo/main');
+
 import 'core-js/es7/reflect';
 import { enableProdMode, NgZone } from '@angular/core';
 
