@@ -27,7 +27,7 @@ jobs:
         with:
           node-version: '14'
       - run: yarn install
-      - run: yarn workspace @micro-frontends-demo/main build --prod --deploy-url https://jpedroh.github.io/micro-frontends-demo
+      - run: yarn workspace @micro-frontends-demo/main build --prod --deploy-url https://jpedroh.github.io/micro-frontends-demo --aot=false --buildOptimizer=false
       - uses: actions/upload-artifact@v2
         with:
           name: main

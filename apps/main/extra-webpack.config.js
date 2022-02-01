@@ -3,6 +3,8 @@ const singleSpaAngularWebpack = require('single-spa-angular/lib/webpack').defaul
 module.exports = (angularWebpackConfig, options) => {
   const singleSpaWebpackConfig = singleSpaAngularWebpack(angularWebpackConfig, options)
 
+  singleSpaWebpackConfig.output.jsonpFunction = '@micro-frontends-demo/main';
+
   singleSpaWebpackConfig.module.loaders = [
     {
       test: /\.ts$/,

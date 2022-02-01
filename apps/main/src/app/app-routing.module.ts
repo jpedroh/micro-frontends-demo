@@ -11,8 +11,8 @@ const routes: Routes = [
   },
   {
     path: 'lazy-loaded',
-    //@ts-ignore
-    loadChildren: () => import('./lazy-loaded/lazy-loaded.module').then(module => module['LazyLoadedModule'])
+    // @ts-ignore
+    loadChildren: () => import('./lazy-loaded/lazy-loaded.module').then(module => module.LazyLoadedModule)
   },
   {
   path: '**',
