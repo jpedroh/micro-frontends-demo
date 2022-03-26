@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'lazy-loaded',
     // @ts-ignore
-    loadChildren: () => import('./lazy-loaded/lazy-loaded.module').then(module => module.LazyLoadedModule)
+    loadChildren: './lazy-loaded/lazy-loaded.module#LazyLoadedModule'
   },
   {
   path: '**',
