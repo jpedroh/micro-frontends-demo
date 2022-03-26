@@ -1,7 +1,7 @@
 {
   "imports": {
     "@micro-frontends-demo/root-config": "./micro-frontends-demo-root-config.js",
-    "@micro-frontends-demo/main": "./main.c8f0d281ab73464bb7e9.js",
+    "@micro-frontends-demo/main": "./main.cc831a2243bd6ac09e1d.js",
     "@micro-frontends-demo/react": "./micro-frontends-demo-react.js",
     "@micro-frontends-demo/auth": "./micro-frontends-demo-auth.js"
   }
