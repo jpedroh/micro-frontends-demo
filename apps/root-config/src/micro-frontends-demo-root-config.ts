@@ -4,7 +4,7 @@ import { getUser } from "@micro-frontends-demo/auth"
 
 registerApplication(
   'main',
-  () => System.import('@micro-frontends-demo/main'),
+  (window as any).angular_main.default,
   (location) => !location.pathname.includes('react'),
   () => { return { user: getUser() } },
 );

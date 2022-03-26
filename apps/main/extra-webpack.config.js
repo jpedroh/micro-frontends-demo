@@ -3,7 +3,10 @@ const singleSpaAngularWebpack = require('single-spa-angular/lib/webpack').defaul
 module.exports = (angularWebpackConfig, options) => {
   const singleSpaWebpackConfig = singleSpaAngularWebpack(angularWebpackConfig, options)
 
-  singleSpaWebpackConfig.output.jsonpFunction = '@micro-frontends-demo/main';
+  singleSpaWebpackConfig.output.libraryName = 'angular_main'
+  singleSpaWebpackConfig.output.libraryTarget = 'umd';
+
+  singleSpaWebpackConfig.module.rules = [{ parser: { system: false } }]
 
   singleSpaWebpackConfig.module.loaders = [
     {
