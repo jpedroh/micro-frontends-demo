@@ -22,6 +22,6 @@
     "skipLibCheck": true
   },
   "files": ["src/micro-frontends-demo-react.tsx"],
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "jest-setup.js"],
   "exclude": ["src/**/*.test*"]
 }

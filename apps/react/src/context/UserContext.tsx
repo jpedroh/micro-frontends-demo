@@ -6,7 +6,7 @@ type UserContextData = {
   user: User | undefined
 }
 
-export const UserContext = createContext<UserContextData>(undefined)
+const UserContext = createContext<UserContextData>(undefined)
 
 export const UserProvider: FC<{ userStream: Observable<User> }> = ({ userStream, children }) => {
   const [user, setUser] = useState<User>();

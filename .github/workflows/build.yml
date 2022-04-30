@@ -4,7 +4,18 @@ on:
     branches:
       - main
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: yarn install
+      - run: yarn test
   build_react:
+    needs: ["test"]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,6 +30,7 @@ jobs:
           name: react
           path: apps/react/dist
   build_angular:
+    needs: ["test"]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,6 +45,7 @@ jobs:
           name: main
           path: apps/main/dist/main
   build_root:
+    needs: ["test"]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -47,6 +60,7 @@ jobs:
           name: root
           path: apps/root-config/dist
   build_auth:
+    needs: ["test"]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
