@@ -10,6 +10,6 @@ module.exports = (webpackConfigEnv, argv) => {
   });
 
   return merge(defaultConfig, {
-    externals: ['@micro-frontends-demo/auth'],
+    externals: ['@micro-frontends-demo/auth']
   });
 };

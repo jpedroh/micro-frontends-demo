@@ -23,5 +23,5 @@
   },
   "files": ["src/micro-frontends-demo-react.tsx"],
   "include": ["src/**/*", "jest-setup.js"],
-  "exclude": ["src/**/*.test*"]
+  "exclude": ["src/**/*.test*","src/**/*.spec*"]
 }
