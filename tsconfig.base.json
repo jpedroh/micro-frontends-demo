@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
       "@micro-frontends-demo/auth": ["lib/auth/src/micro-frontends-demo-auth.ts"]
     }
