@@ -1,5 +1,5 @@
-import { Observable, of, timer } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators'
+import { Observable, timer } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 
 export type User = {
   id: number;
